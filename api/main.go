@@ -22,13 +22,12 @@ func main() {
 	app.Use(helmet.New())
 	app.Use(Middleware.Compress)
 
-
 	file := app.Group("/api/file/")
 
 	app.Get("/", Handler.Home)
 
 	Routes.Files(file)
-	
+
 	app.Use(Middleware.Notfound)
 
 	app.Listen(":3000")
